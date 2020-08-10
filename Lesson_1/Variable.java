@@ -1,20 +1,21 @@
- public class Variable{
- public static void main(String[] args) {
-        byte processors = 2;
+ public class Variable {
+    public static void main(String[] args) {
+        byte numberOfProcessors = 2;
         short frequency = 2500;
-        int ramm = 8099;
-        long numb = -561241566;
-        float freq = 2.5564f;
-        double ram = 7.91;
-        char symb = 'J';
+        int ramInMb = 8099;
+        long diagonal = 12;
+        float frequencyInGhz = 2.5564f;
+        double ramInGb = 7.91;
+        char seriesOfLaptop = 'E';
         boolean laptop = true;
-        System.out.println("Колличество процессоров : " + processors);
+        System.out.println();
+        System.out.println("Колличество процессоров : " + numberOfProcessors);
         System.out.println("Частота : " + frequency);
-        System.out.println("Оперативная память в МБ : " + ramm);
-        System.out.println("Просто номер : " + numb);
-        System.out.println("Частота в Ггц : " + freq);
-        System.out.println("Оперативная память : " + ram);
-        System.out.println("Просто символ : " + symb);
-        System.out.println("Это правда? : " + laptop);
+        System.out.println("Оперативная память в МБ : " + ramInMb);
+        System.out.println("Диагональ экрана в дюймах: " + diagonal);
+        System.out.println("Частота в Ггц : " + frequencyInGhz);
+        System.out.println("Оперативная память в ГБ: " + ramInGb);
+        System.out.println("Серия ноутбуков : " + seriesOfLaptop);
+        System.out.println("Это правда ноутбук? : " + laptop);
     }
 }
