@@ -12,10 +12,10 @@ public class ConditionalStatement {
         char n = name.charAt(0);
         if (age > 20) {
             System.out.println("Уже не юнец");
-            };
+        };
         if (isMale == true) {
             System.out.println("Это парень");
-            }
+        }
         if (isMale != true)
             System.out.println("Это девушка");
         if (height < 1.80){
