@@ -8,8 +8,7 @@
         double ramInGb = 7.91;
         char seriesOfLaptop = 'E';
         boolean laptop = true;
-        System.out.println();
-        System.out.println("Колличество процессоров : " + numberOfProcessors);
+        System.out.println("\nКолличество процессоров : " + numberOfProcessors);
         System.out.println("Частота : " + frequency);
         System.out.println("Оперативная память в МБ : " + ramInMb);
         System.out.println("Диагональ экрана в дюймах: " + diagonal);
