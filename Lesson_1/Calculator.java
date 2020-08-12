@@ -1,34 +1,28 @@
 public class Calculator {
     public static void main(String[] args) {
         double result;
-        int element1 = 9;
-        int element2 = 3;
-        char operator = '^';
+        int num1 = 9;
+        int num2 = 2;
+        char mathSign = '%';
 
-        if (operator == '+') {
-            result = element1 + element2;
-            System.out.println(result);
-        } else if (operator == '-') {
-            result = element1 - element2;
-            System.out.println(result);
-        } else if (operator == '*') {
-            result = element1 * element2;
-            System.out.println(result);
-        } else if (operator == '/') {
-            result = element1 / element2;
-            System.out.println(result);
-        } else if (operator == '^') {
+        if (mathSign == '+') {
+            System.out.println(num1 + num2);
+        } else if (mathSign == '-') {
+            System.out.println(num1 - num2);
+        } else if (mathSign == '*') {
+            System.out.println(num1 * num2);
+        } else if (mathSign == '/') {
+            System.out.println(num1 / num2);
+        } else if (mathSign == '^') {
             result = 1;
-            for (int i = 1; i <= element2; i++) {
-                result = result * element1;
+            for (int i = 1; i <= num2; i++) {
+                result *= num1;
             }
             System.out.println(result);
-        } else if (operator == '%') {
-            result = element1 % element2;
-            System.out.println(result);
+        } else if (mathSign == '%') {
+            System.out.println(num1 % num2);
         } else {
             System.out.println("Незнакомая операция");
         }
-
     }
 }
