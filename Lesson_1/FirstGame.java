@@ -6,10 +6,10 @@ public class FirstGame {
         while (goal != playerNumber) {
             if (goal > playerNumber) {
                 System.out.println ("Введенное вами число меньше того, что загадал компьютер");
-                playerNumber += 1;
+                playerNumber ++;
             } else if (goal < playerNumber) {
                 System.out.println ("Введенное вами число больше того, что загадал компьютер");
-                playerNumber -= 1;
+                playerNumber --;
             }
         }
         System.out.println ("Вы угадали!");
