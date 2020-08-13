@@ -6,7 +6,7 @@ public class Person {
     int age = 27;
 
     void move() {
-
+        System.out.println("Движение вперёд");
     }
 
     void sit() {
@@ -14,7 +14,7 @@ public class Person {
     }
 
     void run() {
-
+        System.out.println("Побежали!");
     }
 
     String saySomething() {
@@ -23,6 +23,7 @@ public class Person {
     }
 
     boolean learnJava() {
+        System.out.println("Изучаем Java с удовольствием");
         return true;
     }
 }
