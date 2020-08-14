@@ -1,11 +1,7 @@
 public class WolfTest {
     public static void main(String[] args) {
         Wolf firstWolf = new Wolf();
-        /*firstWolf.isMale = true;
-        firstWolf.name = "Дымок";
-        firstWolf.weight = 45.65f;
-        firstWolf.age = 7;
-        firstWolf.color = "Grey";*/
+
         firstWolf.setIsMale(true);
         firstWolf.setName("Дымок");
         firstWolf.setWeight(45.55f);
