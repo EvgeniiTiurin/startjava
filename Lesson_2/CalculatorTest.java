@@ -15,6 +15,7 @@ public class CalculatorTest {
         char mathSign = scan2.next().charAt(0);
         System.out.println("");
 
-        Calculator.setCalculation(mathSign,num1,num2);
+        Calculator calcul = new Calculator();
+        calcul.setCalculation(num1,num2,mathSign);
     }
 }
