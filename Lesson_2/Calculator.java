@@ -3,8 +3,7 @@ public class Calculator {
     private int num1;
     private int num2;
 
-    public void setCalculation (char mathSign,int num1,int num2)
-    {
+    public void setCalculation (char mathSign,int num1,int num2) {
         this.mathSign = mathSign;
         this.num1 = num1;
         this.num2 = num2;
@@ -33,7 +32,7 @@ public class Calculator {
             break;
         default:
             System.out.println("Незнакомая операция");
-            //break;
+            break;
         }
     }
 }
