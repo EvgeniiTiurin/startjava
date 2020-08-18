@@ -44,30 +44,30 @@ public class Calculator {
 
     void calculation() {
         switch (mathSign) {
-                case '+':
-                    System.out.println("\nРезультат: " + (num1 + num2));
-                    break;
-                case '-':
-                    System.out.println("\nРезультат: " + (num1 - num2));
-                    break;
-                case '*':
-                    System.out.println("\nРезультат: " + (num1 * num2));
-                    break;
-                case '/':
-                    System.out.println("\nРезультат: " + (num1 / num2));
-                    break;
-                case '^':
-                    int result = 1;
-                    for (int i = 1; i <= num2; i++) {
-                        result *= num1;
-                    }
-                    System.out.println("\nРезультат: " + result);
-                    break;
-                case '%':
-                    System.out.println("\nРезультат: " + (num1 % num2));
-                    break;
-                default:
-                    break;
+            case '+':
+                System.out.println("\nРезультат: " + (num1 + num2));
+                break;
+            case '-':
+                System.out.println("\nРезультат: " + (num1 - num2));
+                break;
+            case '*':
+                System.out.println("\nРезультат: " + (num1 * num2));
+                break;
+            case '/':
+                System.out.println("\nРезультат: " + (num1 / num2));
+                break;
+            case '^':
+                int result = 1;
+                for (int i = 1; i <= num2; i++) {
+                    result *= num1;
+                }
+                System.out.println("\nРезультат: " + result);
+                break;
+            case '%':
+                System.out.println("\nРезультат: " + (num1 % num2));
+                break;
+            default:
+                break;
         }
     }
 }
