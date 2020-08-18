@@ -2,38 +2,35 @@ import java.util.Scanner;
 
 public class CalculatorTest {
     public static void main(String[] args) {
-        boolean continueCal = false, wrongAnswer;
         do {
-            wrongAnswer = false;
-            System.out.print("Введите первое число: ");
+            Calculator calc = new Calculator();
+
+            boolean wrongAnswer = false;
             Scanner scan = new Scanner(System.in, "Cp866");
+            System.out.print("Введите первое число: ");
             int num1 = scan.nextInt();
+            calc.setNum1(num1);
             System.out.print("\nВведите второе число: ");
             int num2 = scan.nextInt();
+            calc.setNum2(num2);
             System.out.print("\nВведите знак операции: ");
             char mathSign = scan.next().charAt(0);
+            calc.setMathSign(mathSign);
+            calc.calculate();
 
-            Calculator cal = new Calculator();
-            cal.setMathSign(mathSign);
-            cal.setNum1(num1);
-            cal.setNum2(num2);
-            cal.calculation();
-
-            outer:
             do {wrongAnswer = true;
                 System.out.print("\nХотите продолжить? [да/нет]: ");
-                String otvet = scan.next();
-                switch (otvet) {
+                String answer = scan.next();
+                switch (answer) {
                     case "да":
-                        wrongAnswer = false;
-                        continueCal = true;
-                        break;
+                        continue;
                     case "нет":
                         return;
                     default:
-                        continue outer;
+                        wrongAnswer = false;
+                        break;
                 }
-            } while (!continueCal);
-        } while (!wrongAnswer);
+            } while (!wrongAnswer);
+        } while (true);
     }
 }
