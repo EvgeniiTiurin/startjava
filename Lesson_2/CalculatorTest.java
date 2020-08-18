@@ -2,20 +2,38 @@ import java.util.Scanner;
 
 public class CalculatorTest {
     public static void main(String[] args) {
-        System.out.print("Введите первое число: ");
-        Scanner scan = new Scanner(System.in);
-        int num1 = scan.nextInt();
-        System.out.println("");
-        System.out.print("Введите второе число: ");
-        Scanner scan1 = new Scanner(System.in);
-        int num2 = scan1.nextInt();
-        System.out.println("");
-        System.out.print("Введите знак операции: ");
-        Scanner scan2 = new Scanner(System.in);
-        char mathSign = scan2.next().charAt(0);
-        System.out.println("");
+        boolean continueCal = false, wrongAnswer;
+        do {
+            wrongAnswer = false;
+            System.out.print("Введите первое число: ");
+            Scanner scan = new Scanner(System.in, "Cp866");
+            int num1 = scan.nextInt();
+            System.out.print("\nВведите второе число: ");
+            int num2 = scan.nextInt();
+            System.out.print("\nВведите знак операции: ");
+            char mathSign = scan.next().charAt(0);
 
-        Calculator calcul = new Calculator();
-        calcul.setCalculation(num1,num2,mathSign);
+            Calculator cal = new Calculator();
+            cal.setMathSign(mathSign);
+            cal.setNum1(num1);
+            cal.setNum2(num2);
+            cal.calculation();
+
+            outer:
+            do {wrongAnswer = true;
+                System.out.print("\nХотите продолжить? [да/нет]: ");
+                String otvet = scan.next();
+                switch (otvet) {
+                    case "да":
+                        wrongAnswer = false;
+                        continueCal = true;
+                        break;
+                    case "нет":
+                        return;
+                    default:
+                        continue outer;
+                }
+            } while (!continueCal);
+        } while (!wrongAnswer);
     }
 }
