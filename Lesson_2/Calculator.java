@@ -23,7 +23,7 @@ public class Calculator {
     }
 
     public char getMathSign() {
-    return mathSign;
+        return mathSign;
     }
 
     void setMathSign(char mathSign) {
@@ -39,7 +39,7 @@ public class Calculator {
             default:
                 System.out.println("\nНезнакомая операция");
                 scanningSign();
-            }
+        }
     }
 
     public void scanningSign() {
