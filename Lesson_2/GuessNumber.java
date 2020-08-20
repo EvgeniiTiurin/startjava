@@ -1,7 +1,11 @@
+import java.util.Scanner;
+
 public class GuessNumber {
 
-    private int goal = 40;
-    private int playerNumber = 46;
+    private int first;
+    private int second;
+    private int number;
+    Scanner scan = new Scanner(System.in);
 
     public void inGame(String name , int number) {
         String tempName = name;
@@ -29,11 +33,34 @@ public class GuessNumber {
     }
 
     public boolean continueGame() {
-        return true;
+        String yes = "да";
+        String no = "нет";
+
+        System.out.print("\nХотите продолжить? [да/нет]: ");
+        String answer = scan.next();
+
+        switch(answer) {
+            case "да":
+                System.out.print("\nВведите имя первого игрока : ");
+                String name = scan.nextLine();
+                firstPlayer.setName(name);
+                System.out.print("\nВведите имя второго игрока : ");
+                name = scan.nextLine();
+                secondPlayer.setName(name);
+                inGame();
+            case "нет":
+                break;
+            default:
+                continueGame();
+        }
     }
 
     public void changePlayer() {
-        System.out.println("\nТеперь ответ второго игрока");
+        if wrong answer{
+            System.out.println("\nТеперь ответ второго игрока");
+        } else {
+
+        }
     }
 
     public void victory(String player) {
