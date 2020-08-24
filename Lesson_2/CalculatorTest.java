@@ -6,7 +6,40 @@ public class CalculatorTest {
         startCalculation(calc);
     }
 
-    public static void continueCalc(Calculator n) {
+    private static void startCalculation(Calculator n) {
+        inputMathExpression(n);
+        n.calculate();
+        continueCalc(n);
+    }
+
+
+    private static void inputMathExpression(Calculator n) {
+        Scanner scan = new Scanner(System.in, "Cp866");
+        System.out.print("\nВведите первое число: ");
+        n.setNum1(scan.nextInt());
+        System.out.print("\nВведите второе число: ");
+        n.setNum2(scan.nextInt());
+        boolean cicle = true;
+        do {
+            System.out.print("\nВведите знак операции: ");
+        char mathSign = scan.next().charAt(0);
+            switch(mathSign) {
+                case '+':
+                case '-':
+                case '*':
+                case '/':
+                case '%':
+                case '^':
+                    n.setMathSign(mathSign);
+                    break;
+                default:
+                    System.out.println("\nНезнакомая операция");
+                    cicle = true;
+            }
+        } while (cicle == false);
+    }
+
+    private static void continueCalc(Calculator n) {
         Scanner scan = new Scanner(System.in, "Cp866");
         String answer;
         System.out.print("\nХотите продолжить? [да/нет]: ");
@@ -19,41 +52,5 @@ public class CalculatorTest {
             default:
                 continueCalc(n);
         }
-    }
-
-    public static void startCalculation(Calculator n) {
-        insertData(n);
-        scanningSign(n);
-        n.calculate();
-        continueCalc(n);
-    }
-
-    public static void scanningSign(Calculator n) {
-        Scanner scan = new Scanner(System.in, "Cp866");
-        System.out.print("\nВведите знак операции: ");
-        char mathSign = scan.next().charAt(0);
-        switch(mathSign) {
-            case '+':
-            case '-':
-            case '*':
-            case '/':
-            case '%':
-            case '^':
-                n.setMathSign(mathSign);
-                break;
-            default:
-                System.out.println("\nНезнакомая операция");
-                scanningSign(n);
-        }
-    }
-
-    public static void insertData(Calculator n) {
-        Scanner scan = new Scanner(System.in, "Cp866");
-        System.out.print("Введите первое число: ");
-        int num1 = scan.nextInt();
-        n.setNum1(num1);
-        System.out.print("\nВведите второе число: ");
-        int num2 = scan.nextInt();
-        n.setNum2(num2);
     }
 }
