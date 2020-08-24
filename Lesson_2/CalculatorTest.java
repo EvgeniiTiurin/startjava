@@ -22,7 +22,7 @@ public class CalculatorTest {
         boolean cicle = true;
         do {
             System.out.print("\nВведите знак операции: ");
-        char mathSign = scan.next().charAt(0);
+            char mathSign = scan.next().charAt(0);
             switch(mathSign) {
                 case '+':
                 case '-':
