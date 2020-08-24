@@ -1,71 +1,83 @@
 import java.util.Scanner;
 
 public class GuessNumber {
+    Scanner scan = new Scanner(System.in, "Cp866");
+    private int goal;
 
-    private int first;
-    private int second;
-    private int number;
-    Scanner scan = new Scanner(System.in);
-
-    public void inGame(String name , int number) {
-        String tempName = name;
-        int playerNumber = number;
-        while (goal != playerNumber) {
-            if (goal > playerNumber) {
-                System.out.println("\nВведенное вами число меньше того, что загадал компьютер");
-                playerNumber ++;
-            } else if (goal < playerNumber) {
-                System.out.println("\nВведенное вами число больше того, что загадал компьютер");
-                playerNumber --;
-            }
-        }
-        System.out.println("\nВы угадали!");
-        //victory(tempName);
+    public int getGoal() {
+        return goal;
     }
 
-    public void startGame() {
-        System.out.println("\nИгра запустилась!");
+    public void setGoal(int goal) {
+        this.goal = goal;
+    }
+
+    public void generateNumber() {
+        System.out.print("\nВведите искомое число: ");
+        setGoal(scan.nextInt());
+    }
+
+    public void startGame(Player firstPlayer, Player secondPlayer) {
+        int first, second;
+
+        while (true) {
+            System.out.print("\nИгрок номер один, вводит число : ");
+            first = scan.nextInt();
+
+            System.out.print("\nИгрок номер два, вводит число : ");
+            second = scan.nextInt();
+
+            if (first == goal) {
+                victory(firstPlayer);
+                break;
+            }
+
+            else if (second == goal) {
+                victory(secondPlayer);
+                break;
+            }
+
+            else {
+                if (first > goal) {
+                    System.out.println ("\nЧисло первого игрока > загаданного");
+                } else {
+                    System.out.println ("\nЧисло первого игрока < загаданного");
+                }
+
+                if (second > goal) {
+                    System.out.println ("\nЧисло второго игрока > загаданного");
+                } else {
+                    System.out.println ("\nЧисло второго игрока < загаданного");
+                }
+            }
+        }
+    continueGame(firstPlayer, secondPlayer);
+    }
+
+    public void continueGame(Player firstPlayer, Player secondPlayer) {
+        System.out.print("\nХотите продолжить? [да/нет]: ");
+
+        switch(scan.next()) {
+            case "да":
+                generateNumber();
+                startGame(firstPlayer, secondPlayer);
+                break;
+            case "нет":
+                endGame();
+                break;
+            default:
+                continueGame(firstPlayer, secondPlayer);
+                break;
+        }
+    }
+
+    public void victory(Player player) {
+        System.out.println("\nИгрок " + player.getName() + " угадал!!! Это победа!!!");
+        System.out.println("\nЗагаданное число : " + getGoal());
     }
 
     public void endGame() {
         System.out.println("\nИгра завершилась!");
         return;
     }
-
-    public boolean continueGame() {
-        String yes = "да";
-        String no = "нет";
-
-        System.out.print("\nХотите продолжить? [да/нет]: ");
-        String answer = scan.next();
-
-        switch(answer) {
-            case "да":
-                System.out.print("\nВведите имя первого игрока : ");
-                String name = scan.nextLine();
-                firstPlayer.setName(name);
-                System.out.print("\nВведите имя второго игрока : ");
-                name = scan.nextLine();
-                secondPlayer.setName(name);
-                inGame();
-            case "нет":
-                break;
-            default:
-                continueGame();
-        }
-    }
-
-    public void changePlayer() {
-        if wrong answer{
-            System.out.println("\nТеперь ответ второго игрока");
-        } else {
-
-        }
-    }
-
-    public void victory(String player) {
-        System.out.println("\nИгрок" + player + " угадал!!! Это победа!!!");
-    }
-
-
 }
