@@ -8,13 +8,9 @@ public class GuessNumber {
         return goal;
     }
 
-    public void setGoal(int goal) {
-        this.goal = goal;
-    }
-
-    public void generateNumber() {
+    public void setGoal() {
         System.out.print("\nВведите искомое число: ");
-        setGoal(scan.nextInt());
+        this.goal = scan.nextInt();
     }
 
     public void startGame(Player firstPlayer, Player secondPlayer) {
@@ -59,7 +55,7 @@ public class GuessNumber {
 
         switch(scan.next()) {
             case "да":
-                generateNumber();
+                setGoal();
                 startGame(firstPlayer, secondPlayer);
                 break;
             case "нет":
