@@ -1,7 +1,7 @@
 public class Calculator {
-    private char mathSign;
     private int num1;
     private int num2;
+    private char mathSign;
 
     public int getNum1() {
         return num1;

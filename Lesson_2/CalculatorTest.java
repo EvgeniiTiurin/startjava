@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class CalculatorTest {
+    static Scanner scan = new Scanner(System.in, "Cp866");
     public static void main(String[] args) {
         Calculator calc = new Calculator();
         do {
@@ -9,30 +10,26 @@ public class CalculatorTest {
         } while (isNext(calc));
     }
 
-    private static void inputMathExpression(Calculator n) {
-        Scanner scan = new Scanner(System.in, "Cp866");
+    private static void inputMathExpression(Calculator calc) {
         System.out.print("\nВведите первое число: ");
-        n.setNum1(scan.nextInt());
+        calc.setNum1(scan.nextInt());
         System.out.print("\nВведите второе число: ");
-        n.setNum2(scan.nextInt());
+        calc.setNum2(scan.nextInt());
         do {
             System.out.print("\nВведите знак операции: ");
-        } while (n.setMathSign(scan.next().charAt(0)));
+        } while (calc.setMathSign(scan.next().charAt(0)));
     }
 
-    private static boolean isNext(Calculator n) {
-        Scanner scan = new Scanner(System.in, "Cp866");
-        String answer;
+    private static boolean isNext(Calculator calc) {
         do {
             System.out.print("\nХотите продолжить? [да/нет]: ");
-            answer = scan.next();
-            switch (answer) {
-                case "да":
+            switch(scan.next()) {
+                case ("да") :
                     return true;
-                case "нет":
+                case ("нет") :
                     return false;
-                default:
-                    break;
+                default :
+                    continue;
             }
         } while (true);
     }
