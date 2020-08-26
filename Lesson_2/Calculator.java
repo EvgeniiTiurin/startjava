@@ -23,8 +23,20 @@ public class Calculator {
         return mathSign;
     }
 
-    public void setMathSign(char mathSign) {
-        this.mathSign = mathSign;
+    public boolean setMathSign(char mathSign) {
+        switch(mathSign) {
+                case '+':
+                case '-':
+                case '*':
+                case '/':
+                case '%':
+                case '^':
+                    this.mathSign = mathSign;
+                    return false;
+                default:
+                    System.out.println("\nНезнакомая операция");
+                    return true;
+        }
     }
 
     public void calculate() {
