@@ -13,24 +13,22 @@ public class CalculatorTest {
     private static void inputMathExpression(Calculator calc) {
         System.out.print("\nВведите первое число: ");
         calc.setNum1(scan.nextInt());
-        System.out.print("\nВведите второе число: ");
-        calc.setNum2(scan.nextInt());
         do {
             System.out.print("\nВведите знак операции: ");
         } while (calc.setMathSign(scan.next().charAt(0)));
+        System.out.print("\nВведите второе число: ");
+        calc.setNum2(scan.nextInt());
     }
 
     private static boolean isNext(Calculator calc) {
+        String answer;
         do {
             System.out.print("\nХотите продолжить? [да/нет]: ");
-            switch(scan.next()) {
-                case ("да") :
-                    return true;
-                case ("нет") :
-                    return false;
-                default :
-                    continue;
+            answer = scan.next();
+            if (answer.equals("нет")) {
+                return false;
             }
-        } while (true);
+        } while (!answer.equals("да"));
+        return true;
     }
 }
