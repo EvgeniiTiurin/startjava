@@ -12,4 +12,22 @@ public class Player {
             this.name = name;
         }
     }
+
+    private int number;
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public Player(String name, int number) {
+        this.name = name;
+        this.number = number;
+    }
+
+    public Player() {
+    }
 }

@@ -13,8 +13,9 @@ public class GuessNumber {
         this.goal = scan.nextInt();
     }
 
-    public void startGame(Player firstPlayer, Player secondPlayer) {
+    public void start(Player firstPlayer, Player secondPlayer) {
         int first, second;
+        setGoal();
 
         while (true) {
             System.out.print("\nИгрок номер один, вводит число : ");
@@ -55,8 +56,7 @@ public class GuessNumber {
 
         switch(scan.next()) {
             case "да":
-                setGoal();
-                startGame(firstPlayer, secondPlayer);
+                start(firstPlayer, secondPlayer);
                 break;
             case "нет":
                 endGame();

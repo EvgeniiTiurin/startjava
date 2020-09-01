@@ -13,7 +13,6 @@ public class GuessNumberTest{
         secondPlayer.setName(scan.next());
 
         GuessNumber game = new GuessNumber();
-        game.setGoal();
-        game.startGame(firstPlayer, secondPlayer);
+        game.start(firstPlayer, secondPlayer);
     }
 }
