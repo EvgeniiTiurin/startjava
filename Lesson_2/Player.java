@@ -23,9 +23,8 @@ public class Player {
         this.number = number;
     }
 
-    public Player(String name, int number) {
+    public Player(String name) {
         this.name = name;
-        this.number = number;
     }
 
     public Player() {

@@ -9,39 +9,37 @@ public class GuessNumber {
     }
 
     public void setGoal() {
-        System.out.print("\nВведите искомое число: ");
-        this.goal = scan.nextInt();
+        this.goal = (int) (Math.random() * 100);
     }
 
     public void start(Player firstPlayer, Player secondPlayer) {
-        int first, second;
         setGoal();
 
         while (true) {
             System.out.print("\nИгрок номер один, вводит число : ");
-            first = scan.nextInt();
+            firstPlayer.setNumber(scan.nextInt());
 
             System.out.print("\nИгрок номер два, вводит число : ");
-            second = scan.nextInt();
+            secondPlayer.setNumber(scan.nextInt());
 
-            if (first == goal) {
+            if (firstPlayer.getNumber() == goal) {
                 victory(firstPlayer);
                 break;
             }
 
-            else if (second == goal) {
+            else if (secondPlayer.getNumber() == goal) {
                 victory(secondPlayer);
                 break;
             }
 
             else {
-                if (first > goal) {
-                    System.out.println ("\nЧисло первого игрока > загаданного");
+                if (firstPlayer.getNumber() > goal) {
+                    System.out.println ("\nЧисло первого игрока больше загаданного");
                 } else {
-                    System.out.println ("\nЧисло первого игрока < загаданного");
+                    System.out.println ("\nЧисло первого игрока меньше загаданного");
                 }
 
-                if (second > goal) {
+                if (secondPlayer.getNumber() > goal) {
                     System.out.println ("\nЧисло второго игрока > загаданного");
                 } else {
                     System.out.println ("\nЧисло второго игрока < загаданного");
