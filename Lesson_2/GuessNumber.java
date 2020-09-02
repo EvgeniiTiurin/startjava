@@ -2,6 +2,15 @@ import java.util.Scanner;
 
 public class GuessNumber {
     Scanner scan = new Scanner(System.in, "Cp866");
+
+    private Player firstPlayer;
+    private Player secondPlayer;
+
+    public GuessNumber(Player firstPlayer, Player secondPlayer ) {
+    this.firstPlayer = firstPlayer;
+    this.secondPlayer = secondPlayer;
+    }
+
     private int goal;
 
     public int getGoal() {
@@ -12,10 +21,7 @@ public class GuessNumber {
         this.goal = (int) (Math.random() * 100);
     }
 
-    public GuessNumber(Player firstPlayer, Player secondPlayer ) {
-    }
-
-    public void start(Player firstPlayer, Player secondPlayer) {
+    public void start() {
         setGoal();
 
         while (true) {
@@ -28,14 +34,10 @@ public class GuessNumber {
             if (firstPlayer.getNumber() == goal) {
                 victory(firstPlayer);
                 break;
-            }
-
-            else if (secondPlayer.getNumber() == goal) {
+            } else if (secondPlayer.getNumber() == goal) {
                 victory(secondPlayer);
                 break;
-            }
-
-            else {
+            } else {
                 if (firstPlayer.getNumber() > goal) {
                     System.out.println ("\nЧисло первого игрока больше загаданного");
                 } else {
@@ -49,21 +51,21 @@ public class GuessNumber {
                 }
             }
         }
-    continueGame(firstPlayer, secondPlayer);
+    continueGame();
     }
 
-    public void continueGame(Player firstPlayer, Player secondPlayer) {
+    public void continueGame() {
         System.out.print("\nХотите продолжить? [да/нет]: ");
 
         switch(scan.next()) {
             case "да":
-                start(firstPlayer, secondPlayer);
+                start();
                 break;
             case "нет":
                 endGame();
                 break;
             default:
-                continueGame(firstPlayer, secondPlayer);
+                continueGame();
                 break;
         }
     }

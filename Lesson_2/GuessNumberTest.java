@@ -11,6 +11,6 @@ public class GuessNumberTest {
         Player secondPlayer = new Player(scan.next());
 
         GuessNumber game = new GuessNumber(firstPlayer, secondPlayer);
-        game.start(firstPlayer, secondPlayer);
+        game.start();
     }
 }
