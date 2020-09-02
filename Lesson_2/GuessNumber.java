@@ -12,6 +12,9 @@ public class GuessNumber {
         this.goal = (int) (Math.random() * 100);
     }
 
+    public GuessNumber(Player firstPlayer, Player secondPlayer ) {
+    }
+
     public void start(Player firstPlayer, Player secondPlayer) {
         setGoal();
 
@@ -40,9 +43,9 @@ public class GuessNumber {
                 }
 
                 if (secondPlayer.getNumber() > goal) {
-                    System.out.println ("\nЧисло второго игрока > загаданного");
+                    System.out.println ("\nЧисло второго игрока больше загаданного");
                 } else {
-                    System.out.println ("\nЧисло второго игрока < загаданного");
+                    System.out.println ("\nЧисло второго игрока меньше загаданного");
                 }
             }
         }
