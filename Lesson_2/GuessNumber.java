@@ -19,13 +19,10 @@ public class GuessNumber {
             insertNumber(firstPlayer);
             if (!checkNumber(firstPlayer)) {
                 break;
-            } else {
-                insertNumber(secondPlayer);
-                if (!checkNumber(secondPlayer)) {
-                    break;
-                } else {
-                    compareNumbers();
-                }
+            }
+            insertNumber(secondPlayer);
+            if (!checkNumber(secondPlayer)) {
+                break;
             }
         }
     }
@@ -41,28 +38,19 @@ public class GuessNumber {
 
     private boolean checkNumber(Player player) {
         if (player.getNumber() == secretNumber) {
-            victory(player);
+            toWin(player);
             return false;
         } else {
+            if (player.getNumber() > secretNumber) {
+                System.out.println ("\nЧисло игрока " + player.getName() + " больше загаданного");
+            } else {
+                System.out.println ("\nЧисло игрока " + player.getName() + " меньше загаданного");
+            }
             return true;
         }
     }
 
-    private void compareNumbers() {
-        if (firstPlayer.getNumber() > secretNumber) {
-            System.out.println ("\nЧисло игрока " + firstPlayer.getName() + " больше загаданного");
-        } else {
-            System.out.println ("\nЧисло игрока " + firstPlayer.getName() + " меньше загаданного");
-        }
-
-        if (secondPlayer.getNumber() > secretNumber) {
-            System.out.println ("\nЧисло игрока " + secondPlayer.getName() + " больше загаданного");
-        } else {
-            System.out.println ("\nЧисло игрока " + secondPlayer.getName() + " меньше загаданного");
-        }
-    }
-
-    private void victory(Player player) {
+    private void toWin(Player player) {
         System.out.println("\nИгрок " + player.getName() + " угадал!!! Это победа!!!");
         System.out.println("\nЗагаданное число : " + player.getNumber());
     }
