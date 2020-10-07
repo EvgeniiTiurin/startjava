@@ -41,10 +41,9 @@ public class GuessNumber {
             System.out.println("\nИгрок " + player.getName() + " угадал!!! Это победа!!!");
             System.out.println("\nЗагаданное число : " + player.getNumber());
             return false;
-        } else {
-            String checkAnswer = (player.getNumber() > secretNumber) ? ("\nЧисло игрока " + player.getName() + " больше загаданного") : ("\nЧисло игрока " + player.getName() + " меньше загаданного");
-            System.out.println (checkAnswer);
-            return true;
         }
+            String checkAnswer = (player.getNumber() > secretNumber) ? " больше загаданного" : " меньше загаданного";
+            System.out.println("\nЧисло игрока " + player.getName() + checkAnswer);
+            return true;
     }
 }
