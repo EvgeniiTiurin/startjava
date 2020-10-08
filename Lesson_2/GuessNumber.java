@@ -15,16 +15,13 @@ public class GuessNumber {
     public void start() {
         setGoal();
 
-        while (true) {
+        do {
             inputNumber(firstPlayer);
             if (!checkNumber(firstPlayer)) {
                 break;
             }
             inputNumber(secondPlayer);
-            if (!checkNumber(secondPlayer)) {
-                break;
-            }
-        }
+        } while (checkNumber(secondPlayer));
     }
 
     private void setGoal() {
@@ -42,8 +39,8 @@ public class GuessNumber {
             System.out.println("\nЗагаданное число : " + player.getNumber());
             return false;
         }
-            String checkAnswer = (player.getNumber() > secretNumber) ? " больше загаданного" : " меньше загаданного";
-            System.out.println("\nЧисло игрока " + player.getName() + checkAnswer);
-            return true;
+        String checkAnswer = (player.getNumber() > secretNumber) ? "больше" : "меньше";
+        System.out.println("\nЧисло игрока " + player.getName() + " " + checkAnswer + " загаданного");
+        return true;
     }
 }
