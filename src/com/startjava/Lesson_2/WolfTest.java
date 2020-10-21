@@ -1,4 +1,4 @@
-package com.startjava.Lesson_2;
+package com.startjava.lesson_2;
 
 public class WolfTest {
     public static void main(String[] args) {
@@ -10,7 +10,7 @@ public class WolfTest {
         firstWolf.setAge(6);
         firstWolf.setColor("Dark Grey");
 
-        System.out.println(firstWolf.getIsMale());
+        System.out.println(firstWolf.isMale());
         System.out.println(firstWolf.getName());
         System.out.println(firstWolf.getWeight());
         System.out.println(firstWolf.getAge());

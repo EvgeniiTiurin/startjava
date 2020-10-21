@@ -1,4 +1,4 @@
-package com.startjava.Lesson_2;
+package com.startjava.lesson_2;
 
 public class Wolf {
     private boolean isMale;
