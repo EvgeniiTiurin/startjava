@@ -1,28 +1,18 @@
 package com.startjava.lesson_2_3_4.calculator;
 
+import static java.lang.Math.*;
+
 public class Calculator {
     private int num1;
     private int num2;
     private char mathSign;
 
-    public int getNum1() {
-        return num1;
-    }
-
     public void setNum1(int num1) {
         this.num1 = num1;
     }
 
-    public int getNum2() {
-        return num2;
-    }
-
     public void setNum2(int num2) {
         this.num2 = num2;
-    }
-
-    public char getMathSign() {
-        return mathSign;
     }
 
     public boolean setMathSign(char mathSign) {
@@ -33,6 +23,8 @@ public class Calculator {
                 case '/':
                 case '%':
                 case '^':
+                case 'M':
+                case 'm':
                     this.mathSign = mathSign;
                     return false;
                 default:
@@ -41,33 +33,37 @@ public class Calculator {
         }
     }
 
-    public void calculate() {
+    public int calculate() {
+       int result = 0;
         switch (mathSign) {
             case '+':
-                System.out.println("\nРезультат: " + (num1 + num2));
+                result = addExact(num1, num2);
                 break;
             case '-':
-                System.out.println("\nРезультат: " + (num1 - num2));
+                result = subtractExact(num1, num2);
                 break;
             case '*':
-                System.out.println("\nРезультат: " + (num1 * num2));
+                result = multiplyExact(num1, num2);
                 break;
             case '/':
-                System.out.println("\nРезультат: " + (num1 / num2));
+                result = floorDiv(num1, num2);
                 break;
             case '^':
-                int result = 1;
-                for (int i = 1; i <= num2; i++) {
-                    result *= num1;
-                }
-                System.out.println("\nРезультат: " + result);
+                result =(int) pow(num1, num2);
                 break;
             case '%':
-                System.out.println("\nРезультат: " + (num1 % num2));
+                result = floorMod(num1, num2);
+                break;
+            case 'M':
+                result = max(num1, num2);
+                break;
+            case 'm':
+                result = min(num1, num2);
                 break;
             default:
                 break;
         }
+        return result;
     }
 }
 

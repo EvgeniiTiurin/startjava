@@ -3,24 +3,22 @@ package com.startjava.lesson_2_3_4.calculator;
 import java.util.Scanner;
 
 public class CalculatorTest {
-    static Scanner scan = new Scanner(System.in, "Cp866");
+    static Scanner scan = new Scanner(System.in);
     public static void main(String[] args) {
         Calculator calc = new Calculator();
         do {
             inputMathExpression(calc);
-            calc.calculate();
+            System.out.println("Результат = " +calc.calculate());
         } while (isNext(calc));
     }
 
     private static void inputMathExpression(Calculator calc) {
-        System.out.print("\nВведите первое число: ");
-        calc.setNum1(scan.nextInt());
-        do {
-            System.out.print("\nВведите знак операции: ");
-        } while (calc.setMathSign(scan.next().charAt(0)));
-        System.out.print("\nВведите второе число: ");
-        calc.setNum2(scan.nextInt());
-    }
+        System.out.print("\nВведите выражение { +, -, *, /, ^, %, M, m }: ");
+        String[] values = scan.nextLine().split(" ");
+        calc.setNum1(Integer.parseInt(values[0]));
+        calc.setMathSign(values[1].charAt(0));
+        calc.setNum2(Integer.parseInt(values[2]));
+        }
 
     private static boolean isNext(Calculator calc) {
         String answer;
@@ -31,6 +29,7 @@ public class CalculatorTest {
                 return false;
             }
         } while (!answer.equals("да"));
+        scan.skip("\\R");
         return true;
     }
 }
