@@ -6,6 +6,14 @@ public class Calculator {
     private int num1;
     private int num2;
     private char mathSign;
+    private String[] values;
+
+    public void setValues(String expression) {
+        values = expression.split(" ");
+        setNum1(Integer.parseInt(values[0]));
+        setMathSign(values[1].charAt(0));
+        setNum2(Integer.parseInt(values[2]));
+    }
 
     public void setNum1(int num1) {
         this.num1 = num1;
@@ -16,54 +24,37 @@ public class Calculator {
     }
 
     public boolean setMathSign(char mathSign) {
-        switch(mathSign) {
-                case '+':
-                case '-':
-                case '*':
-                case '/':
-                case '%':
-                case '^':
-                case 'M':
-                case 'm':
-                    this.mathSign = mathSign;
-                    return false;
-                default:
-                    System.out.println("\nНезнакомая операция");
-                    return true;
+        if (mathSign == '+' || mathSign == '-' || mathSign == '*' || mathSign == '/' || mathSign == '^' || mathSign == '%' || mathSign == 'M' || mathSign == 'm') {
+            this.mathSign = mathSign;
+            return false;
+        } else {
+            System.out.println("\nНезнакомая операция");
+            return true;
         }
     }
 
     public int calculate() {
-       int result = 0;
+        int result = 0;
         switch (mathSign) {
             case '+':
-                result = addExact(num1, num2);
-                break;
+                return addExact(num1, num2);
             case '-':
-                result = subtractExact(num1, num2);
-                break;
+                return subtractExact(num1, num2);
             case '*':
-                result = multiplyExact(num1, num2);
-                break;
+                return multiplyExact(num1, num2);
             case '/':
-                result = floorDiv(num1, num2);
-                break;
+                return floorDiv(num1, num2);
             case '^':
-                result =(int) pow(num1, num2);
-                break;
+                return (int) pow(num1, num2);
             case '%':
-                result = floorMod(num1, num2);
-                break;
+                return floorMod(num1, num2);
             case 'M':
-                result = max(num1, num2);
-                break;
+                return max(num1, num2);
             case 'm':
-                result = min(num1, num2);
-                break;
+                return min(num1, num2);
             default:
-                break;
+                return 0;
         }
-        return result;
     }
 }
 

@@ -9,27 +9,21 @@ public class CalculatorTest {
         do {
             inputMathExpression(calc);
             System.out.println("Результат = " +calc.calculate());
-        } while (isNext(calc));
+        } while (isNext());
     }
 
     private static void inputMathExpression(Calculator calc) {
         System.out.print("\nВведите выражение { +, -, *, /, ^, %, M, m }: ");
-        String[] values = scan.nextLine().split(" ");
-        calc.setNum1(Integer.parseInt(values[0]));
-        calc.setMathSign(values[1].charAt(0));
-        calc.setNum2(Integer.parseInt(values[2]));
+        calc.setValues(scan.nextLine());
         }
 
-    private static boolean isNext(Calculator calc) {
+    private static boolean isNext() {
         String answer;
         do {
             System.out.print("\nХотите продолжить? [да/нет]: ");
             answer = scan.next();
-            if (answer.equals("нет")) {
-                return false;
-            }
-        } while (!answer.equals("да"));
+        } while (!answer.equals("да") && !answer.equals("нет"));
         scan.skip("\\R");
-        return true;
+        return answer.equals("да");
     }
 }
