@@ -8,14 +8,13 @@ public class CalculatorTest {
         Calculator calc = new Calculator();
         do {
             inputMathExpression(calc);
-            System.out.println("Результат = " + calc.calculate());
         } while (isNext());
     }
 
     private static void inputMathExpression(Calculator calc) {
         System.out.print("\nВведите выражение { +, -, *, /, ^, %, M, m }: ");
-        calc.setValues(scan.nextLine());
-        }
+        System.out.println("\nРезультат = " + calc.calculate(scan.nextLine()));
+    }
 
     private static boolean isNext() {
         String answer;

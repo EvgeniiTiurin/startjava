@@ -6,32 +6,9 @@ public class Calculator {
     private int num1;
     private int num2;
     private char mathSign;
-    private String[] splitExpression;
 
-    public void setValues(String expression) {
-        splitExpression = expression.split(" ");
-        setNum1(Integer.parseInt(splitExpression[0]));
-        setMathSign(splitExpression[1].charAt(0));
-        setNum2(Integer.parseInt(splitExpression[2]));
-    }
-
-    public void setNum1(int num1) {
-        this.num1 = num1;
-    }
-
-    public void setNum2(int num2) {
-        this.num2 = num2;
-    }
-
-    public void setMathSign(char mathSign) {
-        if (mathSign == '+' || mathSign == '-' || mathSign == '*' || mathSign == '/' || mathSign == '^' || mathSign == '%' || mathSign == 'M' || mathSign == 'm') {
-            this.mathSign = mathSign;
-        } else {
-            System.out.println("\nНезнакомая операция");
-        }
-    }
-
-    public int calculate() {
+    public int calculate(String expression) {
+        splitting(expression.split(" "));
         switch (mathSign) {
             case '+':
                 return addExact(num1, num2);
@@ -51,6 +28,28 @@ public class Calculator {
                 return min(num1, num2);
             default:
                 return 0;
+        }
+    }
+
+    public void splitting(String[] splitExpression) {
+        setNum1(Integer.parseInt(splitExpression[0]));
+        setMathSign(splitExpression[1].charAt(0));
+        setNum2(Integer.parseInt(splitExpression[2]));
+    }
+
+    public void setNum1(int num1) {
+        this.num1 = num1;
+    }
+
+    public void setNum2(int num2) {
+        this.num2 = num2;
+    }
+
+    public void setMathSign(char mathSign) {
+        if (mathSign == '+' || mathSign == '-' || mathSign == '*' || mathSign == '/' || mathSign == '^' || mathSign == '%' || mathSign == 'M' || mathSign == 'm') {
+            this.mathSign = mathSign;
+        } else {
+            System.out.println("\nНезнакомая операция");
         }
     }
 }
