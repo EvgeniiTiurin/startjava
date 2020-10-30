@@ -6,13 +6,13 @@ public class Calculator {
     private int num1;
     private int num2;
     private char mathSign;
-    private String[] values;
+    private String[] splitExpression;
 
     public void setValues(String expression) {
-        values = expression.split(" ");
-        setNum1(Integer.parseInt(values[0]));
-        setMathSign(values[1].charAt(0));
-        setNum2(Integer.parseInt(values[2]));
+        splitExpression = expression.split(" ");
+        setNum1(Integer.parseInt(splitExpression[0]));
+        setMathSign(splitExpression[1].charAt(0));
+        setNum2(Integer.parseInt(splitExpression[2]));
     }
 
     public void setNum1(int num1) {
@@ -23,18 +23,15 @@ public class Calculator {
         this.num2 = num2;
     }
 
-    public boolean setMathSign(char mathSign) {
+    public void setMathSign(char mathSign) {
         if (mathSign == '+' || mathSign == '-' || mathSign == '*' || mathSign == '/' || mathSign == '^' || mathSign == '%' || mathSign == 'M' || mathSign == 'm') {
             this.mathSign = mathSign;
-            return false;
         } else {
             System.out.println("\nНезнакомая операция");
-            return true;
         }
     }
 
     public int calculate() {
-        int result = 0;
         switch (mathSign) {
             case '+':
                 return addExact(num1, num2);

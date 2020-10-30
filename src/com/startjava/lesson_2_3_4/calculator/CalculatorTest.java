@@ -8,7 +8,7 @@ public class CalculatorTest {
         Calculator calc = new Calculator();
         do {
             inputMathExpression(calc);
-            System.out.println("Результат = " +calc.calculate());
+            System.out.println("Результат = " + calc.calculate());
         } while (isNext());
     }
 
