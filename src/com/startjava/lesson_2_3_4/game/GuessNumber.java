@@ -1,15 +1,16 @@
 package com.startjava.lesson_2_3_4.game;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class GuessNumber {
-    Scanner scan = new Scanner(System.in); //, "Cp866"
+    Scanner scan = new Scanner(System.in);
 
     private int secretNumber;
     private Player firstPlayer;
     private Player secondPlayer;
 
-    public GuessNumber(Player firstPlayer, Player secondPlayer ) {
+    public GuessNumber(Player firstPlayer, Player secondPlayer) {
         this.firstPlayer = firstPlayer;
         this.secondPlayer = secondPlayer;
     }
@@ -29,8 +30,8 @@ public class GuessNumber {
         if (secondPlayer.getAttempts() == 0) {
             System.out.println("\nУ " + firstPlayer.getName() + " закончились попытки");
             System.out.println("У " + secondPlayer.getName() + " закончились попытки\n");
-            firstPlayer.showArray();
-            secondPlayer.showArray();
+            System.out.println(Arrays.toString(firstPlayer.getArray(10)));
+            System.out.println(Arrays.toString(secondPlayer.getArray(10)));
         }
     }
 
@@ -45,10 +46,10 @@ public class GuessNumber {
     }
 
     private boolean checkNumber(Player player) {
-        player.setAttempts(player.getAttempts()-1);
+        player.setAttempts();
         if (player.getNumber() == secretNumber) {
-            System.out.println("\nЧисла игрока " + firstPlayer.getName() + " : " + Arrays.toString(Arrays.copyOf(firstPlayer.getArray(), 10 - firstPlayer.getAttempts())));
-            System.out.println("Числа игрока " + secondPlayer.getName() + " : " + Arrays.toString(Arrays.copyOf(secondPlayer.getArray(), 10 -secondPlayer.getAttempts())));
+            System.out.println("\nЧисла игрока " + firstPlayer.getName() + " : " + Arrays.toString(Arrays.copyOf(firstPlayer.getArray(10 - firstPlayer.getAttempts()), 10 - firstPlayer.getAttempts())));
+            System.out.println("Числа игрока " + secondPlayer.getName() + " : " + Arrays.toString(Arrays.copyOf(secondPlayer.getArray(10 - secondPlayer.getAttempts()), 10 - secondPlayer.getAttempts())));
             System.out.println("\nИгрок " + player.getName() + " угадал число " + player.getNumber() + " с " + (10 - player.getAttempts()) + " попытки");
             return false;
         }

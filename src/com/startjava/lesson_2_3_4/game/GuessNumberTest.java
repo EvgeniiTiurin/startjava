@@ -1,4 +1,5 @@
 package com.startjava.lesson_2_3_4.game;
+
 import java.util.Scanner;
 
 public class GuessNumberTest {
@@ -22,10 +23,7 @@ public class GuessNumberTest {
         do {
             System.out.print("\nХотите продолжить? [да/нет]: ");
             answer = scan.next();
-            if (answer.equals("нет")) {
-                return false;
-            }
-        } while (!answer.equals("да")&&!answer.equals("нет"));
+        } while (!answer.equals("да") && !answer.equals("нет"));
         return answer.equals("да");
     }
 }
