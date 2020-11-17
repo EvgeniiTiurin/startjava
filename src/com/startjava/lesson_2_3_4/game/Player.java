@@ -4,8 +4,7 @@ import java.util.Arrays;
 
 public class Player {
     private String name;
-    private int attempts = 10;
-    private int number;
+    private int attempts;
     private int[] enteredNumbers = new int[10];
 
     public Player(String name) {
@@ -20,27 +19,23 @@ public class Player {
         return attempts;
     }
 
-    public void setAttempts(int attempts) {
+    public void setAttempt(int attempts) {
         this.attempts = attempts;
     }
 
-    public void setAttempts() {
-        this.attempts--;
+    public void setAttempt() {
+        attempts--;
     }
 
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
-    public int[] getArray(int attempts) {
+    public int[] getEnteredNumbers(int attempts) {
         return Arrays.copyOf(enteredNumbers, attempts);
     }
 
-    public void setArray(int number, int index) {
-        enteredNumbers[index - 1] = number;
+    public int getOnlyOneNumber(int attempt) {
+        return enteredNumbers[GuessNumber.maxAttempts - attempt];
+    }
+
+    public void setEnteredNumbers(int index, int number) {
+        enteredNumbers[index] = number;
     }
 }

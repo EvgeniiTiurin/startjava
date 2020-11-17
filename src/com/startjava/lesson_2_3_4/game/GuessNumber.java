@@ -9,6 +9,7 @@ public class GuessNumber {
     private int secretNumber;
     private Player firstPlayer;
     private Player secondPlayer;
+    public static final int maxAttempts = 10;
 
     public GuessNumber(Player firstPlayer, Player secondPlayer) {
         this.firstPlayer = firstPlayer;
@@ -17,8 +18,8 @@ public class GuessNumber {
 
     public void start() {
         setGoal();
-        firstPlayer.setAttempts(10);
-        secondPlayer.setAttempts(10);
+        firstPlayer.setAttempt(maxAttempts);
+        secondPlayer.setAttempt(maxAttempts);
 
         do {
             inputNumber(firstPlayer);
@@ -30,8 +31,8 @@ public class GuessNumber {
         if (secondPlayer.getAttempts() == 0) {
             System.out.println("\nУ " + firstPlayer.getName() + " закончились попытки");
             System.out.println("У " + secondPlayer.getName() + " закончились попытки\n");
-            System.out.println(Arrays.toString(firstPlayer.getArray(10)));
-            System.out.println(Arrays.toString(secondPlayer.getArray(10)));
+            System.out.println(Arrays.toString(firstPlayer.getEnteredNumbers(maxAttempts)));
+            System.out.println(Arrays.toString(secondPlayer.getEnteredNumbers(maxAttempts)));
         }
     }
 
@@ -41,20 +42,26 @@ public class GuessNumber {
 
     private void inputNumber(Player player) {
         System.out.print("\nИгрок " + player.getName() + ", вводит число : ");
-        player.setNumber(scan.nextInt());
-        player.setArray(player.getNumber(), 11-player.getAttempts());
+        player.setEnteredNumbers(maxAttempts - player.getAttempts(), scan.nextInt());
     }
 
     private boolean checkNumber(Player player) {
-        player.setAttempts();
-        if (player.getNumber() == secretNumber) {
-            System.out.println("\nЧисла игрока " + firstPlayer.getName() + " : " + Arrays.toString(Arrays.copyOf(firstPlayer.getArray(10 - firstPlayer.getAttempts()), 10 - firstPlayer.getAttempts())));
-            System.out.println("Числа игрока " + secondPlayer.getName() + " : " + Arrays.toString(Arrays.copyOf(secondPlayer.getArray(10 - secondPlayer.getAttempts()), 10 - secondPlayer.getAttempts())));
-            System.out.println("\nИгрок " + player.getName() + " угадал число " + player.getNumber() + " с " + (10 - player.getAttempts()) + " попытки");
+        if (player.getOnlyOneNumber(player.getAttempts()) == secretNumber) {
+            player.setAttempt();
+            System.out.print("\nЧисла игрока " + firstPlayer.getName() + " : ");
+            for (int i = 0; i <= (firstPlayer.getEnteredNumbers(maxAttempts - firstPlayer.getAttempts())).length-1; i++) {
+                System.out.print(firstPlayer.getOnlyOneNumber(maxAttempts - i) + " ");
+            }
+            System.out.print("\nЧисла игрока " + secondPlayer.getName() + " : ");
+            for (int i = 0; i <= (secondPlayer.getEnteredNumbers(maxAttempts - secondPlayer.getAttempts())).length-1; i++) {
+                System.out.print(secondPlayer.getOnlyOneNumber(maxAttempts - i) + " ");
+            }
+            System.out.println("\n\nИгрок " + player.getName() + " угадал число " + secretNumber + " с " + (maxAttempts - player.getAttempts()) + " попытки");
             return false;
         }
-        String checkAnswer = (player.getNumber() > secretNumber) ? "больше" : "меньше";
+        String checkAnswer = (player.getOnlyOneNumber(player.getAttempts()) > secretNumber) ? "больше" : "меньше";
         System.out.println("\nЧисло игрока " + player.getName() + " " + checkAnswer + " загаданного");
+        player.setAttempt();
         System.out.println("\nУ игрока " + player.getName() + " осталось " + player.getAttempts() + " попыт(ок/ки)");
         return true;
     }

@@ -10,7 +10,7 @@ public class GuessNumberTest {
         Player firstPlayer = new Player(scan.next());
         System.out.print("\nВведите имя второго игрока : ");
         Player secondPlayer = new Player(scan.next());
-        System.out.println("\nУ Вас по 10 попыток");
+        System.out.println("\nУ Вас по " + GuessNumber.maxAttempts + " попыток");
 
         GuessNumber game = new GuessNumber(firstPlayer, secondPlayer);
         do {
