@@ -1,6 +1,5 @@
 package com.startjava.lesson_2_3_4.game;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Player {
@@ -33,8 +32,11 @@ public class Player {
         attempts--;
     }
 
-    public int[] getEnteredNumbers(int attempts) {
-        return Arrays.copyOf(enteredNumbers, attempts);
+    public void getEnteredNumbers(int attempts) {
+        System.out.print("\nЧисла игрока " + getName() + " : ");
+        for (int i = 0; i < GuessNumber.MAX_ATTEMPTS - attempts; i++) {
+            System.out.print(getLastNumber(GuessNumber.MAX_ATTEMPTS - i) + " ");
+        }
     }
 
     public int getLastNumber(int attempt) {
