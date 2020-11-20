@@ -6,11 +6,8 @@ public class GuessNumberTest {
     static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
-        System.out.print("\nВведите имя первого игрока : ");
-        Player firstPlayer = new Player(scan.next());
-        System.out.print("\nВведите имя второго игрока : ");
-        Player secondPlayer = new Player(scan.next());
-        System.out.println("\nУ Вас по " + GuessNumber.maxAttempts + " попыток");
+        Player firstPlayer = new Player();
+        Player secondPlayer = new Player();
 
         GuessNumber game = new GuessNumber(firstPlayer, secondPlayer);
         do {

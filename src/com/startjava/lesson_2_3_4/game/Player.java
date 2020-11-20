@@ -1,14 +1,20 @@
 package com.startjava.lesson_2_3_4.game;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Player {
     private String name;
+    static Scanner scan = new Scanner(System.in);
+    static private int numberOfPlayer = 1;
     private int attempts;
     private int[] enteredNumbers = new int[10];
 
-    public Player(String name) {
-        this.name = name;
+    public Player() {
+        System.out.print("\nВведите имя игрока " + numberOfPlayer + " : ");
+        name = scan.next();
+        numberOfPlayer++;
+        attempts = GuessNumber.MAX_ATTEMPTS;
     }
 
     public String getName() {
@@ -31,11 +37,11 @@ public class Player {
         return Arrays.copyOf(enteredNumbers, attempts);
     }
 
-    public int getOnlyOneNumber(int attempt) {
-        return enteredNumbers[GuessNumber.maxAttempts - attempt];
+    public int getLastNumber(int attempt) {
+        return enteredNumbers[GuessNumber.MAX_ATTEMPTS - attempt];
     }
 
-    public void setEnteredNumbers(int index, int number) {
-        enteredNumbers[index] = number;
+    public void setEnteredNumber(int attempts, int number) {
+        enteredNumbers[attempts] = number;
     }
 }
