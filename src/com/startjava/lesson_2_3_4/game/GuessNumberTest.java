@@ -6,14 +6,20 @@ public class GuessNumberTest {
     static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Player firstPlayer = new Player();
-        Player secondPlayer = new Player();
+        System.out.print("\nВведите имя первого игрока : ");
+        Player firstPlayer = new Player(scan.next());
+        System.out.print("\nВведите имя второго игрока : ");
+        Player secondPlayer = new Player(scan.next());
 
         GuessNumber game = new GuessNumber(firstPlayer, secondPlayer);
         do {
             game.start();
         } while (isNext());
     }
+
+//    public addPlayers() {
+//
+//    }
 
     private static boolean isNext() {
         String answer;

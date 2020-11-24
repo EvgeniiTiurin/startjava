@@ -1,18 +1,12 @@
 package com.startjava.lesson_2_3_4.game;
 
-import java.util.Scanner;
-
 public class Player {
     private String name;
-    static Scanner scan = new Scanner(System.in);
-    static private int numberOfPlayer = 1;
     private int attempts;
     private int[] enteredNumbers = new int[10];
 
-    public Player() {
-        System.out.print("\nВведите имя игрока " + numberOfPlayer + " : ");
-        name = scan.next();
-        numberOfPlayer++;
+    public Player(String name) {
+        this.name = name;
         attempts = GuessNumber.MAX_ATTEMPTS;
     }
 
@@ -33,6 +27,7 @@ public class Player {
     }
 
     public void getEnteredNumbers(int attempts) {
+        //        return Arrays.copyOf(enteredNumbers[], GuessNumber.MAX_ATTEMPTS - attempts);
         System.out.print("\nЧисла игрока " + getName() + " : ");
         for (int i = 0; i < GuessNumber.MAX_ATTEMPTS - attempts; i++) {
             System.out.print(getLastNumber(GuessNumber.MAX_ATTEMPTS - i) + " ");
