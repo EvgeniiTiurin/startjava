@@ -26,14 +26,6 @@ public class Player {
         attempts--;
     }
 
-    public void getEnteredNumbers(int attempts) {
-        //        return Arrays.copyOf(enteredNumbers[], GuessNumber.MAX_ATTEMPTS - attempts);
-        System.out.print("\nЧисла игрока " + getName() + " : ");
-        for (int i = 0; i < GuessNumber.MAX_ATTEMPTS - attempts; i++) {
-            System.out.print(getLastNumber(GuessNumber.MAX_ATTEMPTS - i) + " ");
-        }
-    }
-
     public int getLastNumber(int attempt) {
         return enteredNumbers[GuessNumber.MAX_ATTEMPTS - attempt];
     }

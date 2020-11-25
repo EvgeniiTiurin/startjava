@@ -17,10 +17,6 @@ public class GuessNumberTest {
         } while (isNext());
     }
 
-//    public addPlayers() {
-//
-//    }
-
     private static boolean isNext() {
         String answer;
         do {

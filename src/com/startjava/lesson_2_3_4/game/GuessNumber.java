@@ -63,7 +63,14 @@ public class GuessNumber {
     }
 
     private void allPlayersArrays() {
-        firstPlayer.getEnteredNumbers(firstPlayer.getAttempts());
-        secondPlayer.getEnteredNumbers(secondPlayer.getAttempts());
+        System.out.print("\nЧисла игрока " + firstPlayer.getName() + " : ");
+        for (int i = 0; i < GuessNumber.MAX_ATTEMPTS - firstPlayer.getAttempts(); i++) {
+            System.out.print(firstPlayer.getLastNumber(GuessNumber.MAX_ATTEMPTS - i) + " ");
+        }
+
+        System.out.print("\nЧисла игрока " + secondPlayer.getName() + " : ");
+        for (int i = 0; i < GuessNumber.MAX_ATTEMPTS - secondPlayer.getAttempts(); i++) {
+            System.out.print(secondPlayer.getLastNumber(GuessNumber.MAX_ATTEMPTS - i) + " ");
+        }
     }
 }
