@@ -21,11 +21,12 @@ public class GuessNumber {
         firstPlayer.setAttempt(MAX_ATTEMPTS);
         secondPlayer.setAttempt(MAX_ATTEMPTS);
 
-        while (makeMove(firstPlayer) && makeMove(secondPlayer)) {
+        while (!makeMove(firstPlayer) && !makeMove(secondPlayer)) {
             if (secondPlayer.getAttempts() == 0) {
                 System.out.println("\nУ " + firstPlayer.getName() + " закончились попытки");
                 System.out.println("\nУ " + secondPlayer.getName() + " закончились попытки");
-                allPlayersArrays();
+                showPlayerNumbers(firstPlayer);
+                showPlayerNumbers(secondPlayer);
                 return;
             }
         }
@@ -39,38 +40,32 @@ public class GuessNumber {
         if (player.getAttempts() > 0) {
             inputNumber(player);
             return checkNumber(player);
-        } else {
-            return true;
         }
+        return false;
     }
 
     private void inputNumber(Player player) {
         System.out.print("\nИгрок " + player.getName() + ", вводит число : ");
         player.setEnteredNumber(MAX_ATTEMPTS - player.getAttempts(), scan.nextInt());
-        player.setAttempt();
     }
 
     private boolean checkNumber(Player player) {
         if (player.getLastNumber(player.getAttempts() + 1) == secretNumber) {
             System.out.println("\nИгрок " + player.getName() + " угадал число " + secretNumber + " с " + (MAX_ATTEMPTS - player.getAttempts()) + " попытки");
-            allPlayersArrays();
-            return false;
+            showPlayerNumbers(firstPlayer);
+            showPlayerNumbers(secondPlayer);
+            return true;
         }
         String checkAnswer = (player.getLastNumber(player.getAttempts() + 1) > secretNumber) ? "больше" : "меньше";
         System.out.println("\nЧисло игрока " + player.getName() + " " + checkAnswer + " загаданного");
         System.out.println("\nУ игрока " + player.getName() + " осталось " + player.getAttempts() + " попыт(ок/ки)");
-        return true;
+        return false;
     }
 
-    private void allPlayersArrays() {
-        System.out.print("\nЧисла игрока " + firstPlayer.getName() + " : ");
-        for (int i = 0; i < GuessNumber.MAX_ATTEMPTS - firstPlayer.getAttempts(); i++) {
-            System.out.print(firstPlayer.getLastNumber(GuessNumber.MAX_ATTEMPTS - i) + " ");
-        }
-
-        System.out.print("\nЧисла игрока " + secondPlayer.getName() + " : ");
-        for (int i = 0; i < GuessNumber.MAX_ATTEMPTS - secondPlayer.getAttempts(); i++) {
-            System.out.print(secondPlayer.getLastNumber(GuessNumber.MAX_ATTEMPTS - i) + " ");
+    private void showPlayerNumbers(Player player) {
+        System.out.print("\nЧисла игрока " + player.getName() + " : ");
+        for (int i = 0; i < GuessNumber.MAX_ATTEMPTS - player.getAttempts(); i++) {
+            System.out.print(player.getLastNumber(GuessNumber.MAX_ATTEMPTS - i) + " ");
         }
     }
 }

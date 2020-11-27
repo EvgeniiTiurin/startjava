@@ -22,15 +22,12 @@ public class Player {
         this.attempts = attempts;
     }
 
-    public void setAttempt() {
-        attempts--;
-    }
-
     public int getLastNumber(int attempt) {
         return enteredNumbers[GuessNumber.MAX_ATTEMPTS - attempt];
     }
 
     public void setEnteredNumber(int attempts, int number) {
         enteredNumbers[attempts] = number;
+        this.attempts--;
     }
 }
