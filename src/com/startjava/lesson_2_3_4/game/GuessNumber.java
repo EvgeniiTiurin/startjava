@@ -50,13 +50,13 @@ public class GuessNumber {
     }
 
     private boolean checkNumber(Player player) {
-        if (player.getLastNumber(player.getAttempts() + 1) == secretNumber) {
+        if (player.getLastNumber() == secretNumber) {
             System.out.println("\nИгрок " + player.getName() + " угадал число " + secretNumber + " с " + (MAX_ATTEMPTS - player.getAttempts()) + " попытки");
             showPlayerNumbers(firstPlayer);
             showPlayerNumbers(secondPlayer);
             return true;
         }
-        String checkAnswer = (player.getLastNumber(player.getAttempts() + 1) > secretNumber) ? "больше" : "меньше";
+        String checkAnswer = (player.getLastNumber() > secretNumber) ? "больше" : "меньше";
         System.out.println("\nЧисло игрока " + player.getName() + " " + checkAnswer + " загаданного");
         System.out.println("\nУ игрока " + player.getName() + " осталось " + player.getAttempts() + " попыт(ок/ки)");
         return false;
@@ -65,7 +65,7 @@ public class GuessNumber {
     private void showPlayerNumbers(Player player) {
         System.out.print("\nЧисла игрока " + player.getName() + " : ");
         for (int i = 0; i < GuessNumber.MAX_ATTEMPTS - player.getAttempts(); i++) {
-            System.out.print(player.getLastNumber(GuessNumber.MAX_ATTEMPTS - i) + " ");
+            System.out.print(player.getEnteredNumbers()[i] + " ");
         }
     }
 }
