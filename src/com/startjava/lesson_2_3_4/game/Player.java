@@ -1,9 +1,11 @@
 package com.startjava.lesson_2_3_4.game;
 
+import java.util.Arrays;
+
 public class Player {
     private String name;
     private int attempts;
-    private int[] enteredNumbers = new int[10];
+    private int[] enteredNumbers = new int[GuessNumber.MAX_ATTEMPTS];
 
     public Player(String name) {
         this.name = name;
@@ -18,21 +20,21 @@ public class Player {
         return attempts;
     }
 
-    public void setAttempt(int attempts) {
-        this.attempts = attempts;
+    public void setAttempt(int attempt) {
+        this.attempts = attempt;
     }
 
     public int getLastNumber() {
-        return enteredNumbers[GuessNumber.MAX_ATTEMPTS - (getAttempts() + 1)];
+        return enteredNumbers[GuessNumber.MAX_ATTEMPTS - (attempts + 1)];
     }
 
-    public void setEnteredNumber(int attempts, int number) {
-        enteredNumbers[attempts] = number;
-        this.attempts--;
+    public void setEnteredNumber(int attempt, int number) {
+        enteredNumbers[attempt] = number;
+        attempts--;
     }
 
     public int[] getEnteredNumbers() {
-        return enteredNumbers;
+        int[] numbers = Arrays.copyOf(enteredNumbers, GuessNumber.MAX_ATTEMPTS - getAttempts());
+        return numbers;
     }
-
 }
